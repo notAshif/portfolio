@@ -1,21 +1,21 @@
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Google+Sans+Flex:opsz,wght,GRAD,slnt&family=Indie+Flower&display=swap");
 @import "tailwindcss";
 
 :root {
   --background: #F5F5F5;
   --foreground: #0B0909;
-  --font-sans: "Google Sans Flex", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Caveat", cursive;
+  --accent: #464858;
+  --font-serif: var(--font-instrument-serif), serif;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --font-indie-flower: "Indie Flower", cursive;
 }
 
 @theme inline {
+  --color-accent: var(--accent);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
-  --font-indie-flower: var(--font-indie-flower);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,17 +28,12 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
 }
 
-.font-google-sans-flex {
-  font-family: var(--font-sans);
+.font-serif,
+.font-instrument-serif {
+  font-family: var(--font-serif);
 }
 
-.font-caveat {
-  font-family: var(--font-display);
-}
 
-.font-indie-flower {
-  font-family: var(--font-indie-flower);
-}
