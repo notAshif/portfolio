@@ -1,10 +1,14 @@
-import Image from "next/image";
-import SideHeader from "./component/ui/side-header";
+import SideHeader from "./components/side-header";
+import HeroSection from "./components/client/hero-section";
+import EditorialSection from "./components/editorial-section";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-[url('/hero-lines-group.svg')] bg-cover bg-no-repeat bg-center">
+    <main className="relative min-h-screen w-full bg-[#F5F5F5]">
       <SideHeader />
+      <HeroSection />
+      <EditorialSection />
     </main>
   );
 }
+
