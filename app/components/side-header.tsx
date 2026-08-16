@@ -1,6 +1,6 @@
 import SideNavClient, { MenuItem } from "./client/side-nav-client";
 
-const menuItems: MenuItem[] = [
+export const menuItems: MenuItem[] = [
   {
     name: "Home",
     href: "/",
@@ -22,7 +22,7 @@ const menuItems: MenuItem[] = [
 export default function SideHeader() {
   return (
     <aside
-      className="fixed top-[19px] left-[40px] z-40 mix-blend-difference isolate flex flex-col gap-[5px] select-none"
+      className="fixed top-4 inset-x-4 z-40 mix-blend-difference isolate flex flex-col gap-[5px] select-none xl:top-[19px] xl:left-[40px] xl:right-auto xl:inset-x-auto"
       aria-label="Primary side navigation"
     >
       <SideNavClient

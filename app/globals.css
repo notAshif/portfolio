@@ -1,162 +1,111 @@
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Google+Sans+Flex:opsz,wght,GRAD,slnt&family=Indie+Flower&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
+
+@property --sky-top {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #7a91a8;
+}
+
+@property --sky-bottom {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #e8c8b0;
+}
+
+@property --sky-text {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #1c1a18;
+}
 
 :root {
   --background: #F5F5F5;
   --foreground: #0B0909;
-  --font-sans: var(--font-inter), "Inter", "Google Sans Flex", ui-sans-serif, system-ui, sans-serif;
+  --sky-top: #7a91a8;
+  --sky-bottom: #e8c8b0;
+  --sky-text: #1c1a18;
+  --font-sans: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-instrument-serif), "Instrument Serif", serif;
-  --font-display: "Caveat", cursive;
-  --accent: #464858;
-  --font-serif: var(--font-instrument-serif), serif;
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 @theme inline {
-  --color-accent: var(--accent);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
   --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #F5F5F5;
-    --foreground: #0B0909;
+.sky-layer {
+  background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 100%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sky-layer {
+    transition:
+      --sky-top 500ms ease,
+      --sky-bottom 500ms ease;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-serif);
+.sky-time-slider {
+  appearance: none;
+  background: transparent;
+  margin: 0;
 }
 
-.font-instrument-serif {
-  font-family: var(--font-serif);
+.sky-time-slider::-webkit-slider-runnable-track {
+  height: 20px;
+  background: transparent;
 }
 
-.font-inter {
-  font-family: var(--font-sans);
+.sky-time-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  margin-top: 5px;
+  border-radius: 999px;
+  border: 0;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
 }
 
-.font-serif,
-.font-instrument-serif {
-  font-family: var(--font-serif);
+.sky-time-slider::-moz-range-track {
+  height: 20px;
+  background: transparent;
 }
 
-
-.font-indie-flower {
-  font-family: var(--font-indie-flower);
+.sky-time-slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
 }
 
-/* Reference site-inspired side-nav styles */
-.side-nav-link {
-  color: #ffffff;
-  opacity: 0.34;
-  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), color 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-  font-family: var(--font-serif);
-  font-size: 20px;
-  font-style: italic;
-  line-height: 1.2;
-  text-decoration: none;
-}
-
-.side-nav-link:hover,
-.side-nav-link:focus-visible {
-  opacity: 0.72;
-  outline: none;
-  transform: translateX(2px);
-}
-
-.side-nav-link.is-active {
-  color: #ffffff;
-  opacity: 1;
-}
-
-/* -------------------------------------------------------------------------- */
-/* EDITORIAL / ABOUT SECTION STYLES Inspired by anirudh.info                  */
-/* -------------------------------------------------------------------------- */
-
-.editorial-container {
-  width: min(699px, calc(100vw - 48px));
-  margin-inline: auto;
-}
-
-.reading-line {
-  --line-fill: 0%;
-  color: rgba(17, 17, 17, 0.28);
-  background-image: linear-gradient(
-    90deg,
-    #111111 0%,
-    #111111 calc(var(--line-fill) - 4%),
-    rgba(17, 17, 17, 0.75) var(--line-fill),
-    rgba(17, 17, 17, 0.28) calc(var(--line-fill) + 4%),
-    rgba(17, 17, 17, 0.28) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.github-activity-widget .react-activity-calendar {
   width: 100%;
+  max-width: 100%;
+}
+
+.github-activity-widget .react-activity-calendar__scroll-container {
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .github-activity-widget {
+    padding: 0.75rem;
+  }
+
+  .github-activity-widget .react-activity-calendar text {
+    font-size: 10px !important;
+  }
+}
+
+.github-activity-widget .react-activity-calendar__calendar {
   display: block;
-  position: relative;
-  transition: color 0.15s ease-out;
+  width: 100%;
+  height: auto;
 }
-
-.reading-line.is-line-past {
-  --line-fill: 100%;
-  color: #111111;
-  -webkit-text-fill-color: #111111;
-}
-
-.reading-line button,
-.reading-line a,
-.reading-line mark,
-.reading-line .startup-stack-container,
-.reading-line .inline-flex {
-  -webkit-text-fill-color: initial;
-}
-
-/* 3D Startup Card Stack */
-.startup-stack-container {
-  perspective: 260px;
-  display: inline-flex;
-  vertical-align: middle;
-}
-
-.startup-card-item {
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Vibecoding Graph Animation */
-.vibe-bar {
-  transform-origin: bottom;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Poker Playing Cards Animation */
-.poker-card-spade {
-  transform: translate(4px, 12px) rotate(-6deg);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.poker-card-heart {
-  transform: translate(-4px, 12px) rotate(6deg);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.group:hover .poker-card-spade {
-  transform: translate(-6px, 0px) rotate(-11deg);
-}
-
-.group:hover .poker-card-heart {
-  transform: translate(6px, 0px) rotate(11deg);
-}
-
-
